@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"log"
 	"net/http"
+	"math/big"
 
 	"./donate"
 	"github.com/ethereum/go-ethereum/common"
@@ -37,14 +38,16 @@ func balance(c echo.Context) error {
 		log.Fatalf("Failed to connect to the Ethereum client: %v", err)
 	}
 
-	contractInstance, err := donate.NewDonate(common.HexToAddress("0x08eb6ecdcd5ad8b19c9af94e78383200af2f3442"), conn)
+	contractInstance, err := donate.NewDonate(common.HexToAddress("0xfa7ca0caef9b29c7b38fc85358fd12690a2e52a4"), conn)
 	if err != nil {
 		log.Fatalf("Failed to get balance: %v", err)
 	}
 
 	res, _ := contractInstance.AmountRaised(nil)
-	fmt.Println(res)
-
-	return c.String(http.StatusOK, "I have: "+res.String())
+	x := big.NewInt(1)
+	times, _ := contractInstance.TimeArray(nil, x)
+	//res2 := times[len(times)-1]
+	
+	return c.String(http.StatusOK, "I have: "+res.String()+" "+times.String())
 
 }

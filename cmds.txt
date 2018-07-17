@@ -1,0 +1,2 @@
+solc Donate.sol --abi -o ./
+abigen -abi Donate.abi -pkg donate -out ./donate/donate.go

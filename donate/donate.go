@@ -14,7 +14,7 @@ import (
 )
 
 // DonateABI is the input ABI used to generate the binding from.
-const DonateABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"amountRaised\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"}]"
+const DonateABI = "[{\"constant\":false,\"inputs\":[{\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"name\":\"success\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"timeArray\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"amountRaised\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"fallback\"}]"
 
 // Donate is an auto generated Go binding around an Ethereum contract.
 type Donate struct {
@@ -182,6 +182,32 @@ func (_Donate *DonateSession) AmountRaised() (*big.Int, error) {
 // Solidity: function amountRaised() constant returns(uint256)
 func (_Donate *DonateCallerSession) AmountRaised() (*big.Int, error) {
 	return _Donate.Contract.AmountRaised(&_Donate.CallOpts)
+}
+
+// TimeArray is a free data retrieval call binding the contract method 0x15278f24.
+//
+// Solidity: function timeArray( uint256) constant returns(uint256)
+func (_Donate *DonateCaller) TimeArray(opts *bind.CallOpts, arg0 *big.Int) (*big.Int, error) {
+	var (
+		ret0 = new(*big.Int)
+	)
+	out := ret0
+	err := _Donate.contract.Call(opts, out, "timeArray", arg0)
+	return *ret0, err
+}
+
+// TimeArray is a free data retrieval call binding the contract method 0x15278f24.
+//
+// Solidity: function timeArray( uint256) constant returns(uint256)
+func (_Donate *DonateSession) TimeArray(arg0 *big.Int) (*big.Int, error) {
+	return _Donate.Contract.TimeArray(&_Donate.CallOpts, arg0)
+}
+
+// TimeArray is a free data retrieval call binding the contract method 0x15278f24.
+//
+// Solidity: function timeArray( uint256) constant returns(uint256)
+func (_Donate *DonateCallerSession) TimeArray(arg0 *big.Int) (*big.Int, error) {
+	return _Donate.Contract.TimeArray(&_Donate.CallOpts, arg0)
 }
 
 // Transfer is a paid mutator transaction binding the contract method 0x12514bba.
